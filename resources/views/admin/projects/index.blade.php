@@ -14,15 +14,18 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Data Progetto</th>
+                    <th scope="col">Tecnologia</th>
                     <th scope="col" style="width: 155px">Azioni</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $project)
+                    @dump($project->tecnologies)
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td class=" text-capitalize">{{ $project->name }}</td>
                         <td>{{ Date::formatDate($project->date) }}</td>
+                        <td>-</td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success d-inline-block">
                                 <i class="fa-solid fa-eye"></i>
