@@ -20,12 +20,18 @@
             </thead>
             <tbody>
                 @foreach ($projects as $project)
-                    @dump($project->tecnologies)
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td class=" text-capitalize">{{ $project->name }}</td>
                         <td>{{ Date::formatDate($project->date) }}</td>
-                        <td>-</td>
+                        <td>
+                            @forelse ($project->tecnologies as $tecnology)
+                                <span
+                                    class="py-1 px-2 border border-light rounded-3 bg-dark text-light">{{ $tecnology->name }}</span>
+                            @empty
+                                <span>-</span>
+                            @endforelse
+                        </td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success d-inline-block">
                                 <i class="fa-solid fa-eye"></i>

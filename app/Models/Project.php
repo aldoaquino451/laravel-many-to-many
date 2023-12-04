@@ -12,10 +12,6 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function types() {
-        return $this->hasMany(Type::class);
-    }
-
     public static function generateSlug($name){
         $slug = Str::slug($name, '-');
         $original_slug = $slug;
@@ -35,7 +31,11 @@ class Project extends Model
         return $date_str;
     }
 
-    public function tecnlogies() {
+    public function types() {
+        return $this->hasMany(Type::class);
+    }
+
+    public function tecnologies() {
         return $this->belongsToMany(Tecnology::class);
     }
 }

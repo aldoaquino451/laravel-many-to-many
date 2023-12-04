@@ -11,9 +11,6 @@ class Type extends Model
 {
     use HasFactory;
 
-    public function project() {
-        return $this->belongsTo(Project::class);
-    }
     public static function generateSlug($name){
         $slug = Str::slug($name, '-');
         $original_slug = $slug;
@@ -25,5 +22,9 @@ class Type extends Model
             $c++;
         }
         return $slug;
+    }
+
+    public function project() {
+        return $this->belongsTo(Project::class);
     }
 }

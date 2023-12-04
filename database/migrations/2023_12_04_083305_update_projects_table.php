@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            //
+            // creo una colonna per il tipo
             $table->unsignedBigInteger('type_id')->nullable()->after('id');
-            //
+
+            // assegno una foreign key alla colonna
             $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
         });
     }
@@ -25,9 +26,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('projects', function (Blueprint $table) {
-            //
+            // droppo la foreign key
             $table->dropForeign(['type_id']);
-            //
+
+            // droppo la colonna
             $table->dropColumn('type_id');
         });
     }
