@@ -34,4 +34,8 @@ class Project extends Model
         $date_str = date_format($date, 'd/m/Y');
         return $date_str;
     }
+
+    public function tecnlogies() {
+        return $this->belongsToMany(Tecnology::class);
+    }
 }
