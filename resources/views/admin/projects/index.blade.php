@@ -7,6 +7,9 @@
 @section('content')
     <h2 class="my-4">Lista dei Progetti</h2>
 
+    <p>Crea un nuovo progetto : <br></p>
+    <a class="mb-3 btn btn-primary" href="{{ route('admin.projects.create') }}">Vai al Form</a>
+
     <div class=" w-75">
         <table class="table ">
             <thead class="thead-dark">

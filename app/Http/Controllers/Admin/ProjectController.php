@@ -27,7 +27,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $tecnologies = Tecnology::all();
+        return view('admin.projects.create', compact('tecnologies'));
     }
 
     /**
@@ -38,7 +39,22 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $project = new Project();
+        $project->name = $form_data['name'];
+        $project->slug = Project::generateSlug($project->name);
+        $project->date = date('Y-m-d');
+        $project->description = $form_data['description'];
+        $project->save();
+
+        if( array_key_exists('tecnologies', $form_data)) {
+            $project->tecnologies()->attach($form_data['tecnologies']);
+        }
+
+        // $new_project->type = $form_data['name'];
+
+        return view('admin.projects.show', compact('project'));
     }
 
     /**

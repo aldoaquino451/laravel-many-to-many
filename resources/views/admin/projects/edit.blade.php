@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>Modifica il Progetto {{ $project->name }}</h2>
-    <div class="w-50">
+    <div class="w-75">
 
         <form action="{{ route('admin.projects.update', $project) }}" method="POST">
             @csrf
@@ -11,14 +11,14 @@
                 <label for="name">Modifica il Nome</label>
                 <input class=" form-control" type="text" id="name" name="name" value="{{ $project->name }}">
             </div>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            {{--  --}}
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                 @foreach ($tecnologies as $tecnology)
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="tecnologies[]" id="option{{ $tecnology->id }}" autocomplete="off">
-                        {{ $tecnology->name }}
-                    </label>
+                    <input type="checkbox" class="btn-check" id="btncheck{{ $tecnology->id }}" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btncheck{{ $tecnology->id }}">{{ $tecnology->name }}</label>
                 @endforeach
             </div>
+            {{--  --}}
             <div class=" form-group m-3">
                 <label for="description">Modifica la Descrizione</label>
                 <textarea class=" form-control" type="text" id="description" name="description" cols="30" rows="10">{{ $project->description }}</textarea>

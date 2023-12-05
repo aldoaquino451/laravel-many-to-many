@@ -23,7 +23,7 @@ class ProjectTecnologySeederTable extends Seeder
             $tecnology_id = Tecnology::inRandomOrder()->first()->id;
 
             // assegno ad ogni variabile project una variabile tecnology_id
-            $project->tecnlogies()->attach($tecnology_id);
+            $project->tecnologies()->attach($tecnology_id);
         }
     }
 }

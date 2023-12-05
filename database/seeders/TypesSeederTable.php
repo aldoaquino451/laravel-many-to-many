@@ -19,7 +19,7 @@ class TypesSeederTable extends Seeder
         for( $i = 0; $i < 20; $i ++ ) {
             $type = new Type();
 
-            $type->name = $faker->words(3, true);
+            $type->name = $faker->words(1, true);
             $type->slug = Type::generateSlug($type->name);
 
             $type->save();

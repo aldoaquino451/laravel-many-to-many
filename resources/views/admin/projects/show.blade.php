@@ -13,7 +13,7 @@
                 @forelse ($project->tecnologies as $tecnology)
                     <a href="#" class="badge text-bg-warning text-decoration-none">{{ $tecnology->name }}</a>
                 @empty
-                    Nessuna
+                    <span class="badge text-bg-danger">Nessuna Tecnologia</span>
                 @endforelse
             </p>
             <p class="my-3"><strong>Data: </strong>{{ Date::formatDate($project->date) }}</p>
