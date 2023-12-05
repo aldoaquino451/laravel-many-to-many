@@ -26,8 +26,8 @@
                         <td>{{ Date::formatDate($project->date) }}</td>
                         <td>
                             @forelse ($project->tecnologies as $tecnology)
-                                <span
-                                    class="py-1 px-2 border border-light rounded-3 bg-dark text-light">{{ $tecnology->name }}</span>
+                                <a href="#"
+                                    class="badge text-bg-warning text-decoration-none">{{ $tecnology->name }}</a>
                             @empty
                                 <span>-</span>
                             @endforelse
