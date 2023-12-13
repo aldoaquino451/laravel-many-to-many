@@ -10,6 +10,12 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="{{ route('admin.types.index') }}">Lista Tipi</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{{ route('admin.projects.create') }}">Nuovo progetto</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{{ route('admin.projects-type') }}">Progetti per Tipo</a>
+            </li>
         </ul>
     </aside>
 </aside>

@@ -25,11 +25,15 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
-    ->group(function() {
+    ->group(function () {
+        // Rotta Dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('home');
+        // Rotte Resource
         Route::resource('projects', ProjectController::class);
         Route::resource('tecnologies', TecnologyController::class);
         Route::resource('types', TypeController::class);
+        // Rotte Custom
+        Route::get('projects-type', [TypeController::class, 'projectsType'])->name('projects-type');
     });
 
 // Rotte Profile
@@ -40,4 +44,4 @@ Route::middleware('auth')
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

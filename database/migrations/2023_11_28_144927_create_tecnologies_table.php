@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('slug', 50)->unique();
-            $table->decimal('version', 4, 2);
+            $table->decimal('version', 3, 1);
             $table->timestamps();
         });
     }

@@ -7,9 +7,6 @@
 @section('content')
     <h2 class="my-4">Lista dei Progetti</h2>
 
-    <p>Crea un nuovo progetto : <br></p>
-    <a class="mb-3 btn btn-primary" href="{{ route('admin.projects.create') }}">Vai al Form</a>
-
     <div class=" w-75">
         <table class="table ">
             <thead class="thead-dark">
@@ -17,7 +14,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Data Progetto</th>
-                    <th scope="col">Tecnologia</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col" style="width: 155px">Azioni</th>
                 </tr>
             </thead>
@@ -28,12 +25,11 @@
                         <td class=" text-capitalize">{{ $project->name }}</td>
                         <td>{{ Date::formatDate($project->date) }}</td>
                         <td>
-                            @forelse ($project->tecnologies as $tecnology)
-                                <a href="#"
-                                    class="badge text-bg-warning text-decoration-none">{{ $tecnology->name }}</a>
-                            @empty
+                            @if ($project->type)
+                                <span class="badge bg-primary">{{ $project->type->name }}</span>
+                            @else
                                 <span>-</span>
-                            @endforelse
+                            @endif
                         </td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success d-inline-block">

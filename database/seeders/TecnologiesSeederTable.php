@@ -16,12 +16,12 @@ class TecnologiesSeederTable extends Seeder
      */
     public function run(Faker $faker)
     {
-        for( $i = 0; $i < 10; $i ++ ) {
+        for ($i = 0; $i < 10; $i++) {
             $tecnology = new Tecnology();
 
             $tecnology->name = $faker->words(1, true);
             $tecnology->slug = Tecnology::generateSlug($tecnology->name);
-            $tecnology->version = $faker->randomFloat(2, 1, 50);
+            $tecnology->version = $faker->randomFloat(1, 1, 15);
 
             $tecnology->save();
         }

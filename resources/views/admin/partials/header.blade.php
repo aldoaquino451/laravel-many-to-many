@@ -4,9 +4,12 @@
             <a class="nav-link" href="{{ route('admin.home') }}">
                 <h4>Dashboard</h4>
             </a>
-            <a href="{{ route('home') }}" class="btn btn-light">
-                <i class="fa-solid fa-right-from-bracket"></i>
-            </a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-light">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
         </div>
     </nav>
 </header>

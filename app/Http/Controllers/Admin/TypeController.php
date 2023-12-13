@@ -3,12 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
+
+    /* ---------- Custom ---------- */
+    public function projectsType()
+    {
+        $types = Type::all();
+        $projects_no_type = Project::where('type_id', null)->get();
+
+        return view('admin.types.projects-type', compact('types', 'projects_no_type'));
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -50,8 +61,7 @@ class TypeController extends Controller
             return redirect()
                 ->route('admin.types.index')
                 ->with('error', "'$exist->name' già presente");
-        }
-        else {
+        } else {
             $new_type = new Type();
 
             $new_type->name = $request->name;
@@ -63,7 +73,6 @@ class TypeController extends Controller
                 ->route('admin.types.index')
                 ->with('success', "'$new_type->name' inserito correttamente");
         }
-
     }
 
     /**
@@ -122,6 +131,5 @@ class TypeController extends Controller
         $type->delete();
 
         return redirect()->route('admin.types.index');
-
     }
 }

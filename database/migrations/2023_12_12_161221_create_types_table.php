@@ -8,25 +8,21 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('slug', 50)->unique();
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('types');
     }

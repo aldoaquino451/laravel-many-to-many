@@ -16,10 +16,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(
             [
-                ProjectsSeederTable::class,
+                // Tabelle secondarie
                 TecnologiesSeederTable::class,
                 TypesSeederTable::class,
-                ProjectTecnologySeederTable::class
+
+                // Tabelle principali
+                ProjectsSeederTable::class,
+
+                // Tabelle pivot
+
             ]
         );
     }
