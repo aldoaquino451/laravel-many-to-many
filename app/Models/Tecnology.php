@@ -10,14 +10,19 @@ class Tecnology extends Model
 {
     use HasFactory;
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
 
-    public static function generateSlug($name){
+    public static function generateSlug($name)
+    {
         $slug = Str::slug($name, '-');
         $original_slug = $slug;
         $exist = Tecnology::where('slug', $slug)->first();
         $c = 1;
-        while($exist){
-            $slug = $original_slug. '-'. $c;
+        while ($exist) {
+            $slug = $original_slug . '-' . $c;
             $exist = Tecnology::where('slug', $slug)->first();
             $c++;
         }

@@ -50,7 +50,7 @@
                             @csrf
                             @method('PUT')
                             <td class=" text-capitalize">
-                                @if ($tecnology->id === $id_edit)
+                                @if ($tecnology->id === $tecnology_id)
                                     <input type="text" class="form-control" name="name"
                                         value="{{ $tecnology->name }}">
                                     <div class="input-group mb-3">
@@ -63,13 +63,13 @@
                             <td class=" text-capitalize ">
                                 <div class="d-flex gap-3">
 
-                                    @if ($tecnology->id === $id_edit)
+                                    @if ($tecnology->id === $tecnology_id)
                                         <input type="number" step='0.01' class="form-control" name="version"
                                             value="{{ $tecnology->version }}">
                                     @else
                                         {{ $tecnology->version }}
                                     @endif
-                                    @if ($tecnology->id === $id_edit)
+                                    @if ($tecnology->id === $tecnology_id)
                                         <button type="submit" class="btn btn-success    ">
                                             <i class="fa-solid fa-check"></i>
                                         </button>
@@ -79,10 +79,13 @@
                         </form>
 
                         <td>
-                            <a href="{{ route('admin.tecnologies.edit', $tecnology) }}"
-                                class="btn btn-warning d-inline-block">
-                                <i class="fa-solid fa-pencil"></i>
-                            </a>
+                            <form action="{{ route('admin.tecnologies.edit', $tecnology) }}" method="GET"
+                                class="d-inline-block">
+                                @csrf
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
+                            </form>
 
                             <form action="{{ route('admin.tecnologies.destroy', $tecnology) }}" method="POST"
                                 class="d-inline-block">

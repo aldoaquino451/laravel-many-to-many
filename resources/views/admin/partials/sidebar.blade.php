@@ -5,16 +5,20 @@
                 <a class="nav-link text-light" href="{{ route('admin.projects.index') }}">Lista Progetti</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="{{ route('admin.tecnologies.index') }}">Lista Tecnologie</a>
+                <a class="nav-link text-light" href="{{ route('admin.types.index') }}">Lista Tipi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="{{ route('admin.types.index') }}">Lista Tipi</a>
+                <a class="nav-link text-light" href="{{ route('admin.tecnologies.index') }}">Lista Tecnologie</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="{{ route('admin.projects.create') }}">Nuovo progetto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" href="{{ route('admin.projects-type') }}">Progetti per Tipo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{{ route('admin.projects-tecnology') }}">Progetti per
+                    Tecnologia</a>
             </li>
         </ul>
     </aside>

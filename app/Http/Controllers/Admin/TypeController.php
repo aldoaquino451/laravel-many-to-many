@@ -28,9 +28,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::orderBy('id', 'desc')->paginate(10);
-        $id_edit = null;
-        return view('admin.types.index', compact('types', 'id_edit'));
+        $types = Type::orderBy('id', 'asc')->paginate(10);
+        $type_id = null;
+
+        return view('admin.types.index', compact('types', 'type_id'));
     }
 
     /**
@@ -94,11 +95,10 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        $types = Type::orderBy('id', 'desc')->paginate(10);
+        $types = Type::orderBy('id', 'asc')->paginate(10);
+        $type_id = $type->id;
 
-        $id_edit = $type->id;
-
-        return view('admin.types.index', compact('types', 'id_edit'));
+        return view('admin.types.index', compact('types', 'type_id'));
     }
 
     /**

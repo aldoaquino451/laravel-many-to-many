@@ -38,12 +38,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($types as $index => $type)
+                @foreach ($types as $type)
                     <tr>
                         <th scope="row">{{ $type->id }}</th>
 
                         <td class=" text-capitalize">
-                            @if ($type->id === $id_edit)
+                            @if ($type->id === $type_id)
                                 <form action="{{ route('admin.types.update', $type) }}" method="POST">
                                     @csrf
                                     @method('PUT')
@@ -61,9 +61,12 @@
                         </td>
 
                         <td>
-                            <a href="{{ route('admin.types.edit', $type) }}" class="btn btn-warning d-inline-block">
-                                <i class="fa-solid fa-pencil"></i>
-                            </a>
+                            <form action="{{ route('admin.types.edit', $type) }}" method="GET" class="d-inline-block">
+                                @csrf
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
+                            </form>
 
                             <form action="{{ route('admin.types.destroy', $type) }}" method="POST" class="d-inline-block">
                                 @csrf

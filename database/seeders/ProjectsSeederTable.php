@@ -20,7 +20,10 @@ class ProjectsSeederTable extends Seeder
         for ($i = 0; $i < 30; $i++) {
             $project = new Project();
 
-            $project->type_id = Type::inRandomOrder()->first()->id;
+            if (rand(1, 10) > 2) {
+                $project->type_id = Type::inRandomOrder()->first()->id;
+            }
+
             $project->name = $faker->words(3, true);
             $project->slug = Project::generateSlug($project->name);
             $project->date = $faker->date();

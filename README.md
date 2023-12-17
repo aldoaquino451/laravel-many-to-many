@@ -18,3 +18,4 @@ creare il seeder per il model Technology.
 aggiungere le operazioni CRUD per il model Technology, in modo da gestire le tecnologie utilizzate nei progetti direttamente dal pannello di amministrazione.       
 **Bonus:3**         
 Al click di una Technology si accede a una pagina che espone tutti i progetti della teconogia selezionata       
+

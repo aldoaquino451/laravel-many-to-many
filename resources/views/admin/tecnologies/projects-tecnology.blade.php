@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2 class="my-4">Progetti raggruppati per Tipo</h2>
+    <h2 class="my-4">Progetti raggruppati per Tecnologia</h2>
 
     <div class=" w-75">
         <table class="table ">
@@ -9,24 +9,25 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Versione</th>
                     <th scope="col">Progetti</th>
-
                 </tr>
             </thead>
             <tbody>
-                @foreach ($types as $type)
+                @foreach ($tecnologies as $tecnology)
                     <tr>
-                        <th scope="row">{{ $type->id }}</th>
+                        <th scope="row">{{ $tecnology->id }}</th>
                         <td class="text-capitalize">
-                            {{ $type->name }}
+                            {{ $tecnology->name }}
                         </td>
+                        <th scope="row">{{ $tecnology->version }}</th>
                         <td class="text-capitalize">
-                            @if (!$type->projects->isEmpty())
+                            @if (!$tecnology->projects->isEmpty())
                                 <ul class="list-group">
                                     <li class="list-group-item bg-dark text-light">
-                                        Numero Progetti: {{ count($type->projects) }}
+                                        Numero Progetti: {{ count($tecnology->projects) }}
                                     </li>
-                                    @foreach ($type->projects as $project)
+                                    @foreach ($tecnology->projects as $project)
                                         <li class="list-group-item">
                                             {{ $project->name }}
                                         </li>
@@ -41,15 +42,18 @@
                 <tr>
                     <th scope="row">-</th>
                     <td class="text-capitalize">
-                        Nessun Tipo
+                        Nessuna Tecnologia
                     </td>
                     <td class="text-capitalize">
-                        @if (count($projects_no_type) > 0)
+                        -
+                    </td>
+                    <td class="text-capitalize">
+                        @if (count($projects_no_tecnology) > 0)
                             <ul class="list-group">
                                 <li class="list-group-item bg-dark text-light">
-                                    Numero Progetti: {{ count($projects_no_type) }}
+                                    Numero Progetti: {{ count($projects_no_tecnology) }}
                                 </li>
-                                @foreach ($projects_no_type as $project)
+                                @foreach ($projects_no_tecnology as $project)
                                     <li class="list-group-item">
                                         {{ $project->name }}
                                     </li>

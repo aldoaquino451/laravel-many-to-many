@@ -15,6 +15,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Data Progetto</th>
                     <th scope="col">Tipo</th>
+                    <th scope="col">Tecnologia</th>
                     <th scope="col" style="width: 155px">Azioni</th>
                 </tr>
             </thead>
@@ -22,15 +23,34 @@
                 @foreach ($projects as $project)
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
+
                         <td class=" text-capitalize">{{ $project->name }}</td>
+
                         <td>{{ Date::formatDate($project->date) }}</td>
+
                         <td>
                             @if ($project->type)
-                                <span class="badge bg-primary">{{ $project->type->name }}</span>
+                                <span class=" text-capitalize text-secondary">{{ $project->type->name }}</span>
                             @else
                                 <span>-</span>
                             @endif
                         </td>
+
+                        {{--  --}}
+                        <td>
+                            @forelse ($project->tecnologies as $tecnology)
+                                <a href="{{ route('admin.projects-by-tecnology', $tecnology) }}"
+                                    class=" text-decoration-none">
+                                    <span class="badge bg-primary text-capitalize">{{ $tecnology->name }} </span>
+                                </a>
+                            @empty
+                                <a href="{{ route('admin.projects-no-tecnology') }}" class=" text-decoration-none">
+                                    <span class="badge bg-danger text-capitalize">No Tecnology </span>
+                                </a>
+                            @endforelse
+                        </td>
+                        {{--  --}}
+
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success d-inline-block">
                                 <i class="fa-solid fa-eye"></i>

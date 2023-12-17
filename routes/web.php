@@ -23,25 +23,28 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 
 // Rotte Admin
 Route::middleware(['auth', 'verified'])
-    ->name('admin.')
-    ->prefix('admin')
-    ->group(function () {
-        // Rotta Dashboard
-        Route::get('/', [DashboardController::class, 'index'])->name('home');
-        // Rotte Resource
-        Route::resource('projects', ProjectController::class);
-        Route::resource('tecnologies', TecnologyController::class);
-        Route::resource('types', TypeController::class);
-        // Rotte Custom
-        Route::get('projects-type', [TypeController::class, 'projectsType'])->name('projects-type');
-    });
+  ->name('admin.')
+  ->prefix('admin')
+  ->group(function () {
+    // Rotta Dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('home');
+    // Rotte Resource
+    Route::resource('projects', ProjectController::class);
+    Route::resource('tecnologies', TecnologyController::class);
+    Route::resource('types', TypeController::class);
+    // Rotte Custom
+    Route::get('projects-type', [TypeController::class, 'projectsType'])->name('projects-type');
+    Route::get('projects-tecnology', [TecnologyController::class, 'projectsTecnology'])->name('projects-tecnology');
+    Route::get('projects-by-tecnology/{tecnology}', [TecnologyController::class, 'projectsByTecnology'])->name('projects-by-tecnology');
+    Route::get('projects-no-tecnology', [TecnologyController::class, 'projectsNoTecnology'])->name('projects-no-tecnology');
+  });
 
 // Rotte Profile
 Route::middleware('auth')
-    ->group(function () {
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    });
+  ->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  });
 
 require __DIR__ . '/auth.php';

@@ -20,6 +20,18 @@ class Project extends Model
         'date'
     ];
 
+    // Many to Many
+    public function tecnologies()
+    {
+        return $this->belongsToMany(Tecnology::class);
+    }
+
+    // One to Many
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
     public static function generateSlug($name)
     {
         $slug = Str::slug($name, '-');
@@ -39,10 +51,5 @@ class Project extends Model
         $date = date_create($date);
         $date_str = date_format($date, 'd/m/Y');
         return $date_str;
-    }
-
-    public function type()
-    {
-        return $this->belongsTo(Type::class);
     }
 }

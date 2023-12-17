@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(
             [
+                // Tabella Utenti
+                UsersSeederTable::class,
+
                 // Tabelle secondarie
                 TecnologiesSeederTable::class,
                 TypesSeederTable::class,
@@ -24,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 ProjectsSeederTable::class,
 
                 // Tabelle pivot
-
+                ProjectTecnologySeederTable::class
             ]
         );
     }
